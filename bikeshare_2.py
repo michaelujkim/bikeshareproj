@@ -132,8 +132,7 @@ def user_stats(df):
     else:
         print("Most common user type:")
         print(df['User Type'].value_counts().idxmax())
-        print("Most common gender:")
-        print(df['Gender'].value_counts().idxmax())
+    if 'Birth Year' in df.columns:
         print("Most recent birthyear:")
         # finds maximum year, which is most recent
         print(df['Birth Year'].max())
@@ -142,6 +141,13 @@ def user_stats(df):
         print("Most common birthyear:")
         # counts birth year occurence and shows the most common
         print(df['Birth Year'].value_counts().idxmax())
+    else:
+        print("No birth year info")
+    if 'Gender' in df.columns:
+        print("Most common gender:")
+        print(df['Gender'].value_counts().idxmax())
+    else:
+        print("No gender info")
 
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
