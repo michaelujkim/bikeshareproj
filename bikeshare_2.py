@@ -25,10 +25,10 @@ def get_filters():
         if city not in CITY_DATA:
             print("error in city")
             continue
-        elif int(month) < 0 or int(month) > 12:
+        elif month == '' or int(month) < 0 or int(month) > 12:
             print("error in month")
             continue
-        elif int(day) < 0 or int(day) > 7:
+        elif day == '' or int(day) < 0 or int(day) > 7:
             print("error in day")
             continue
         break
@@ -97,8 +97,7 @@ def time_stats(df):
 
 
 def station_stats(df):
-
-'''accepts filtered and city specified dataframe'''
+    '''accepts filtered and city specified dataframe'''
     print('\nCalculating The Most Popular Stations and Trip...\n')
     start_time = time.time()
     if df.empty:
@@ -111,14 +110,14 @@ def station_stats(df):
         print("Most popular combination of stations:")
         print(df.groupby(['Start Station', 'End Station']
                          ).size().idxmax())  # groups start and end station and counts the most common and identifies the key
-'''prints Most popular starting station, Most popular ending station, and Most popular combination of stations on the terminal console, also prints the time it took to run the function, also prints error if there is an empty dataframe'''
+
+    '''prints Most popular starting station, Most popular ending station, and Most popular combination of stations on the terminal console, also prints the time it took to run the function, also prints error if there is an empty dataframe'''
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
 
 
 def trip_duration_stats(df):
-
-'''accepts filtered and city specified dataframe'''
+    '''accepts filtered and city specified dataframe'''
     print('\nCalculating Trip Duration...\n')
     start_time = time.time()
     if df.empty:
@@ -131,12 +130,13 @@ def trip_duration_stats(df):
 
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
+
+
 '''prints Total trip duration and Average trip duration of stations on the terminal console, also prints the time it took to run the function, also prints error if there is an empty dataframe'''
 
 
 def user_stats(df):
-
-'''accepts filtered and city specified dataframe'''
+    '''accepts filtered and city specified dataframe'''
     print('\nCalculating User Stats...\n')
     start_time = time.time()
     if df.empty:
@@ -160,7 +160,8 @@ def user_stats(df):
         print(df['Gender'].value_counts().idxmax())
     else:
         print("No gender info")
-'''prints Most common user type, Most recent birthyear (if it exists in data), Earliest birthyear (if it exists in data), Most common birthyear(if it exists in data), and Most common gender (if it exists in data) on the terminal console, also prints the time it took to run the function, also prints error if there is an empty dataframe'''
+
+    '''prints Most common user type, Most recent birthyear (if it exists in data), Earliest birthyear (if it exists in data), Most common birthyear(if it exists in data), and Most common gender (if it exists in data) on the terminal console, also prints the time it took to run the function, also prints error if there is an empty dataframe'''
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
 
